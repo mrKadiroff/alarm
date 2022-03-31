@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.uygotgich.databinding.ActivityMainBinding
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -26,19 +27,40 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         createNotificationChannel()
 
+
+
+        binding.switchButton.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                // The switch is enabled/checked
+               setAlarm()
+
+                // Change the app background color
+
+            } else {
+                // The switch is disabled
+                cancelAlarm()
+            }
+        }
+
+
+
+
+
+
+
         binding.selectTimeBtn.setOnClickListener {
 
             showTimePicker()
 
         }
 
-        binding.setAlarmBtn.setOnClickListener {
-            setAlarm()
-        }
-
-        binding.cancelAlarmBtn.setOnClickListener {
-            cancelAlarm()
-        }
+//        binding.setAlarmBtn.setOnClickListener {
+//            setAlarm()
+//        }
+//
+//        binding.cancelAlarmBtn.setOnClickListener {
+//            cancelAlarm()
+//        }
 
 
     }
@@ -56,6 +78,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setAlarm() {
+
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this,AlarmReceiver::class.java)
 
@@ -126,7 +149,7 @@ class MainActivity : AppCompatActivity() {
             calendar[Calendar.SECOND] = 0
             calendar[Calendar.MILLISECOND] = 0
 
-
+            binding.switchButton.visibility = View.VISIBLE
 
 
 

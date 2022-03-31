@@ -24,8 +24,8 @@ class AlarmReceiver : BroadcastReceiver() {
 
         val builder = NotificationCompat.Builder(context!!,"foxandroid")
             .setSmallIcon(R.drawable.ic_launcher_background)
-            .setContentTitle("Foxandroid Alarm Manager")
-            .setContentText("Subscribe")
+            .setContentTitle("Budilnik")
+            .setContentText("Vaqt bo'ldi")
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
